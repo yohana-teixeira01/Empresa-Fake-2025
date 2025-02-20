@@ -5,38 +5,42 @@ Java RESTful criada para a Empresa Fake.
 
 ```mermaid
 classDiagram
-    class Employees {
+    class Client {
+        +int id
         +String name
-        +Contract contract
-        +List~Skill~ skills
-        +List~Benefit~ benefits
-        +List~Notice~ notices
     }
 
-    class Contract {
-        +String type
-        +String startDate
-        +double salary
-        +String department
-    }
-
-    class Skill {
+    class Product {
+        +int id
         +String name
-        +String description
     }
 
-    class Benefit {
-        +String name
-        +String description
+    class Region {
+        +int id
+        +String country
+        +String state
+        +String city
     }
 
-    class Notice {
-        +String name
-        +String description
+    class Time {
+        +int id
+        +int year
+        +int semester
+        +int quarter
+        +int month
+        +int day
     }
 
-    Employees "1" -- "1" Contract 
-    Employees "1" -- "1..N" Skill 
-    Employees "1" -- "1..N" Benefit 
-    Employees "1" -- "0..N" Notice 
+    class Sale {
+        +int id
+        +int quantity
+        +float totalValue
+    }
+
+    Client "1" --* "0..N" Sale : 
+    Product "1" --* "1..N" Sale : 
+    Region "1" --* "1..N" Sale : 
+    Time "1" --* "1..N" Sale : 
+ 
+
 ```
